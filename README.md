@@ -112,3 +112,8 @@ Sentinel 2(R,G,B,NIR), Swiss Alti3D DEM as input , Noise Map by FOEN as ground t
 ## Conclusion
 
 This project shows that a U-Net-based deep learning model can approximate large-scale road traffic noise patterns using Sentinel-2 imagery and DEM data. Sentinel-2 imagery alone provides useful spatial information for detecting road-related noise structures, while the integration of elevation data improves spatial consistency and supports the representation of terrain-related effects.
+
+
+## Keywords
+
+Traffic Noise Estimation, Road Traffic Noise, Environmental Noise, Deep Learning, U-Net, CNN, Sentinel-2, DEM, Remote Sensing, GIS, Geospatial Analysis, Raster Processing, Noise Mapping, Terrain Influence, Barrier Simulation, Shadow Effect, Python, PyTorch
