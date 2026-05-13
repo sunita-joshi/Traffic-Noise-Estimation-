@@ -14,11 +14,7 @@ The Project uses CNN in analysing the ability of Deep learning model in learning
 
 \- `notebooks/` — Jupyter notebooks for data processing, model development, evaluation, and simulation experiments.
 
-\- `results/figures/` — selected output figures from the experiments.
-
-\- `results/tables/` — model performance summary tables.
-
-\- `reports/` — short methodology and project summaries.
+\- `results/figures/` — selected output figures and tables from the experiments.
 
 
 
