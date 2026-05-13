@@ -2,9 +2,9 @@
 
 
 
-This repository contains the code and selected outputs from my master’s thesis on traffic noise prediction using deep learning 
+This repository contains the code and selected outputs from my master’s thesis on traffic noise prediction using deep learning
 
-The Project uses CNN in analysing the ability of Deep learning model in learning spatial Patterns like traffic noise using Regression and inspect the influence of topographical Information in Noise Propagation 
+The Project uses CNN in analysing the ability of Deep learning model in learning spatial Patterns like traffic noise using Regression and inspect the influence of topographical Information in Noise Propagation
 
 
 
@@ -32,7 +32,7 @@ The Project uses CNN in analysing the ability of Deep learning model in learning
 
 \- Traffic noise estimation with integration of DEM
 
-\- Best-performing model evaluation 
+\- Best-performing model evaluation
 
 \- Barrier wall simulation
 
@@ -67,4 +67,6 @@ Python, Jupyter Notebook, deep learning-based regression, geospatial raster proc
 
 
 The simulation experiments are used for interpretation and do not replace full acoustic simulation. Model transferability to other cities requires further testing.
+
+
 
