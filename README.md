@@ -1,68 +1,114 @@
-\# Estimation of Traffic Noise Using Sentinel-2 Imagery and Elevation Model based on Deep-Learning
+# Estimation of Traffic Noise Using Sentinel-2 Imagery and Elevation Model Based on Deep Learning
 
+## Introduction
 
+Traffic noise is an important environmental issue that affects human health and urban quality of life. Traditional physical noise models can provide reliable estimates, but they often require detailed input data, high computational effort, and extensive modelling parameters.
 
-This repository contains the code and selected outputs from my master’s thesis on traffic noise prediction using deep learning
+This repository contains the code and selected outputs from my master's thesis, which explores a deep learning-based approach for estimating road traffic noise using geospatial raster data. The study applies a U-Net-based convolutional neural network to predict continuous road traffic noise patterns from Sentinel-2 imagery and Digital Elevation Model (DEM) data.
 
-The Project uses CNN in analysing the ability of Deep learning model in learning spatial Patterns like traffic noise using Regression and inspect the influence of topographical Information in Noise Propagation
+The project focuses not only on prediction accuracy, but also on whether the model can learn terrain-related noise propagation behaviour, such as attenuation caused by elevation differences, simulated barrier walls, and shadow-effect patterns.
 
+## Project Overview
 
+The research compares two main modelling approaches:
 
-\## Repository Contents
+1. A baseline model using Sentinel-2 image-based input features.
+2. A DEM-integrated model using Sentinel-2 imagery and elevation information.
 
+Additional experiments were conducted to analyse:
 
+- DEM normalization strategies,
+- data augmentation and masking strategies,
+- model behaviour under simulated barrier-wall conditions,
+- shadow-effect-like patterns,
+- model generalization in a different geographical region.
 
-\- `notebooks/` — Jupyter notebooks for data processing, model development, evaluation, and simulation experiments.
+## Objectives
 
-\- `results/figures/` — selected output figures and tables from the experiments.
+The main objectives of this project are:
 
+- Estimate spatial road traffic noise levels using deep learning and geospatial raster data.
+- Compare a Sentinel-2-based baseline model with a DEM-enhanced model.
+- Evaluate model performance using RMSE, MAE, and R².
+- Analyse the role of topography in predicted noise propagation.
+- Test whether the trained model shows physically meaningful behaviour under controlled elevation simulations.
+- Assess model generalization using selected patches from Baden-Württemberg.
 
+## Repository Structure
 
-\## Main Experiments
+```text
+Traffic-Noise-Estimation/
+│
+├── README.md
+├── .gitignore
+│
+├── Data Processing/
+│   ├── DEM_Cropping.ipynb
+│   ├── DEM_Tiling.ipynb
+│   ├── Patch Extraction.ipynb
+│   ├── Patch Extraction_nodem.ipynb
+│   └── Patch Formation.ipynb
+│
+├── Traffic Noise Estimation Sentinel-2 image/
+│   └── Traffic Noise Estimation Sentinel-2 image.ipynb
+│
+├── Traffic Noise Estimation with DEM/
+│   └── Traffic Noise Estimation with DEM.ipynb
+│
+├── Best Performing Model.ipynb
+│
+├── Barrier Wall Simulation/
+│   └── Barrier_wall-Simulation.ipynb
+│
+├── Shadow Effect/
+│   └── Shadow Effect.ipynb
+│
+├── Model Generalization/
+│   └── Model Generalization.ipynb
+│
+└── Results/
+    ├── Barrier Wall Simulation/
+    ├── DEM and no DEM comparison/
+    ├── Model Generalization/
+    ├── Model Without DEM/
+    ├── Model with DEM/
+    └── Shadow Effect/
 
+```
+## Notebook Descriptions
 
+### Data Processing
 
-\- Data processing
+The notebooks in this folder contain the preprocessing workflow used to prepare the geospatial raster inputs. This includes DEM cropping, DEM tiling, patch extraction, and patch formation. The processed patches combine Sentinel-2 image bands, DEM information, and road traffic noise data into aligned raster inputs for model training and evaluation.
 
-\- Traffic noise estimation using only Sentinel-2 imagery
+### Traffic Noise Estimation Sentinel-2 image
 
-\- Traffic noise estimation with integration of DEM
+This notebook contains the baseline model workflow using Sentinel-2 image-based input features. The model uses RGB and NIR bands to estimate road traffic noise without adding elevation information. It includes experiments related to masking strategy, augmentation, training, and evaluation.
 
-\- Best-performing model evaluation
+### Traffic Noise Estimation with DEM
 
-\- Barrier wall simulation
+This notebook contains the DEM-integrated traffic noise estimation workflow. The model uses Sentinel-2 imagery together with DEM information to evaluate whether topography improves noise prediction and spatial consistency. Different DEM normalization strategies are tested, including Z-score normalization, percentile-based scaling, and fixed-denominator scaling.
 
-\- Shadow-effect analysis
+### Best Performing Model
 
-\- Model generalization
+This notebook contains the final selected model configuration. The best-performing setup is based on the DEM-integrated model with fixed-denominator DEM scaling. It includes hyperparameter tuning using different learning rates, batch sizes, and loss functions, followed by evaluation across different random seeds.
 
+### Barrier Wall Simulation
 
+This notebook contains the controlled barrier-wall simulation experiment. Artificial elevation modifications are introduced near selected road corridors to analyse whether the trained model responds to barrier-like topographic changes. The experiment compares different barrier heights, widths, and spatial configurations.
 
-\## Data and Model Availability
+### Shadow Effect
 
+This notebook contains the rectangular-object simulation experiment used to analyse shadow-effect behaviour. Synthetic rectangular elevation objects are inserted into the DEM, and the change in predicted noise is analysed in front and shadow regions.
 
+### Model Generalization
 
-The full dataset, generated patches, and trained model checkpoints are not included in this repository due to file size and data restrictions.
+This notebook evaluates the trained model on selected patches from Baden-Württemberg. The purpose is to test whether the model trained on the Swiss dataset can transfer learned spatial noise patterns to a different geographical region.
 
+## Dataset Used
 
+Sentinel 2(R,G,B,NIR), Swiss Alti3D DEM as input , Noise Map by FOEN as ground truth The full datasets are not included in this repository because of large file size and data storage limitations
 
-This repository is intended to show the research workflow, code structure, selected outputs, and methodology.
+## Conclusion
 
-
-
-\## Tools and Methods
-
-
-
-Python, Jupyter Notebook, deep learning-based regression, geospatial raster processing, Sentinel-2 imagery, DEM data, and simulation-based model interpretation.
-
-
-
-\## Limitations
-
-
-
-The simulation experiments are used for interpretation and do not replace full acoustic simulation. Model transferability to other cities requires further testing.
-
-
-
+This project shows that a U-Net-based deep learning model can approximate large-scale road traffic noise patterns using Sentinel-2 imagery and DEM data. Sentinel-2 imagery alone provides useful spatial information for detecting road-related noise structures, while the integration of elevation data improves spatial consistency and supports the representation of terrain-related effects.
